@@ -101,13 +101,13 @@
 </head>
 <body>
     <div class="window-controls">
-        <button title="Minimize">_</button>
-        <button title="Maximize">□</button>
-        <button title="Close">x</button>
+        <button id="minimize" title="Minimize">_</button>
+        <button id="maximize" title="Maximize">□</button>
+        <button id="close" title="Close">x</button>
     </div>
     <div class="semi-circle">Aditya's Database</div>
     <h2>FOR SALES DATABASE</h2>
-    <div class="table-container">
+    <div class="table-container" id="table-container">
         <form action="/submit" method="POST">
             <table>
                 <tr>
@@ -147,6 +147,22 @@
             if (!isValid) {
                 event.preventDefault();
                 alert('Please fill in all fields.');
+            }
+        });
+
+        document.getElementById('close').addEventListener('click', function () {
+            window.close();
+        });
+
+        document.getElementById('minimize').addEventListener('click', function () {
+            document.getElementById('table-container').style.display = 'none';
+        });
+
+        document.getElementById('maximize').addEventListener('click', function () {
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                document.documentElement.requestFullscreen();
             }
         });
     </script>
