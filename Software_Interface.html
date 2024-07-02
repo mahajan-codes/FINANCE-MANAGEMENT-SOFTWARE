@@ -41,7 +41,7 @@
         .semi-circle {
             position: absolute;
             top: 0px;
-            right: 1100px;
+            right: 1150px;
             width: 400px;
             height: 350px;
             background-color: #6c7ae0;
@@ -108,48 +108,47 @@
     <div class="semi-circle">Aditya's Database</div>
     <h2>FOR SALES DATABASE</h2>
     <div class="table-container">
-            </div>
-</body>
-</html>
+        <form action="/submit" method="POST">
+            <table>
+                <tr>
+                    <th>Company ID</th>
+                    <th>Client ID</th>
+                    <th>Product ID</th>
+                    <th>Price Sold</th>
+                    <th>Quantity Sold</th>
+                </tr>
+                <tr>
+                    <td><input type="text" name="company_id" placeholder="Enter Company ID"></td>
+                    <td><input type="text" name="client_id" placeholder="Enter Client ID"></td>
+                    <td><input type="text" name="product_id" placeholder="Enter Product ID"></td>
+                    <td><input type="text" name="price_sold" placeholder="Enter Price Sold"></td>
+                    <td><input type="text" name="quantity_sold" placeholder="Enter Quantity Sold"></td>
+                </tr>
+                <tr>
+                    <td colspan="5"><input type="submit" value="Submit"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script>
+        document.querySelector('form').addEventListener('submit', function (event) {
+            let isValid = true;
+            const inputs = document.querySelectorAll('input[type="text"]');
 
-<form action="/submit" method="POST">
-    <table>
-        <tr>
-            <th>Company ID</th>
-            <th>Client ID</th>
-            <th>Product ID</th>
-            <th>Price Sold</th>
-            <th>Quantity Sold</th>
-        </tr>
-        <tr>
-            <td><input type="text" name="company_id" placeholder="Enter Company ID"></td>
-            <td><input type="text" name="client_id" placeholder="Enter Client ID"></td>
-            <td><input type="text" name="product_id" placeholder="Enter Product ID"></td>
-            <td><input type="text" name="price_sold" placeholder="Enter Price Sold"></td>
-            <td><input type="text" name="quantity_sold" placeholder="Enter Quantity Sold"></td>
-        </tr>
-        <tr>
-            <td colspan="5"><input type="submit" value="Submit"></td>
-        </tr>
-    </table>
-</form>
-<script>
-    document.querySelector('form').addEventListener('submit', function (event) {
-        let isValid = true;
-        const inputs = document.querySelectorAll('input[type="text"]');
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.style.border = '1px solid red';
+                } else {
+                    input.style.border = '1px solid #ccc';
+                }
+            });
 
-        inputs.forEach(input => {
-            if (!input.value.trim()) {
-                isValid = false;
-                input.style.border = '1px solid red';
-            } else {
-                input.style.border = '1px solid #ccc';
+            if (!isValid) {
+                event.preventDefault();
+                alert('Please fill in all fields.');
             }
         });
-
-        if (!isValid) {
-            event.preventDefault();
-            alert('Please fill in all fields.');
-        }
-    });
-</script>
+    </script>
+</body>
+</html>
