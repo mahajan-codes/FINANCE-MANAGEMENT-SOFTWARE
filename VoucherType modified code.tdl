@@ -1,0 +1,102 @@
+[Report: VoucherTypes]
+Variable: TempVName : String
+Variable	: vTempVName		: String
+Set		: TempVName		: $Name
+
+[System: Formula]
+	SkipVoucherNameDetailsFromName		: NOT $$IsEmpty:$Parent AND ($IsBehaveAsDuty OR (($IsGrpRevenue:Group:$Parent) AND NOT ##UseAddressforRevenue))
+	IsChangeVoucherClientNameDetail	: NOT ($$InCreateMode AND @@SkipVoucherNameDetailsFromName) AND NOT $$IsEqual:$Name:##vTempVName
+
+[#Part : VTYPBehaviourMain]
+Line :AdharLD, LWLedAdhar, ClientID, ProductID, Quantity, Price, InvoiceNumber
+
+[Line: AdharLD]
+Field: AdharDD
+
+[Field: AdharDD]
+use: name field
+set as: "ADITYA's Database"
+style: Large Bold
+width: 50% page
+align: center
+BackGround : Light Blue
+skip: yes
+
+ 
+[Line : LWLedAdhar]
+Fields : Short Prompt,LWLedAdharNo
+Local : Field : Short Prompt : Setas : "Customer ID:"
+ 
+[Field :LWLedAdharNo]
+Use : name Field
+
+Setas : $LWLedAdharNoStore
+Storage :LWLedASdharNoStore
+ 
+[system : udf]
+LWLedAdharNoStore: string : 500
+ 
+ 
+[Line : ClientID]
+Fields : Short Prompt,LWLedAdharNop
+Local : Field : Short Prompt : Setas : "Client ID:"
+ 
+[Field :LWLedAdharNop]
+Use : name Field
+Setas : $LWLedAdharNopStore
+Storage :LWLedAdharNopStore
+ 
+[system : udf]
+LWLedAdharNopStore: string : 600
+ 
+ 
+[Line : ProductID]
+Fields : Short Prompt,LWLedAdharNopa
+Local : Field : Short Prompt : Setas : "Product ID:"
+ 
+[Field :LWLedAdharNopa]
+Use : name Field
+Setas : $LWLedAdharNopaStore
+Storage :LWLedAdharNopaStore
+ 
+[system : udf]
+LWLedAdharNopaStore: string : 700
+ 
+ 
+[Line : Quantity]
+Fields : Short Prompt,LWLedAdharNopb
+Local : Field : Short Prompt : Setas : "Quantity:"
+ 
+[Field :LWLedAdharNopb]
+Use : name Field
+Setas : $LWLedAdharNopbStore
+Storage :LWLedAdharNopbStore
+ 
+[system : udf]
+LWLedAdharNopbStore: string : 800
+ 
+ 
+[Line : Price]
+Fields : Short Prompt,LWLedAdharNopc
+Local : Field : Short Prompt : Setas : "Price:"
+ 
+[Field :LWLedAdharNopc]
+Use : name Field
+Setas : $LWLedAdharNopcStore
+Storage :LWLedAdharNopcStore
+ 
+[system : udf]
+LWLedAdharNopcStore: string : 900
+ 
+ 
+[Line : InvoiceNumber]
+Fields : Short Prompt,LWLedAdharNopd
+Local : Field : Short Prompt : Setas : "Invoice Number:"
+ 
+[Field :LWLedAdharNopd]
+Use : name Field
+Setas : $LWLedAdharNopdStore
+Storage :LWLedAdharNopdStore
+ 
+[system : udf]
+LWLedAdharNopdStore: string : 1000
